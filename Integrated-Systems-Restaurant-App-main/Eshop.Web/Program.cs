@@ -2,6 +2,7 @@
 using ERestaurant.Repository;
 using ERestaurant.Repository.Implementation;
 using ERestaurant.Repository.Interface;
+using ERestaurant.Service;
 using ERestaurant.Service.Implementation;
 using ERestaurant.Service.Interface;
 using EShop.Domain;
@@ -38,8 +39,9 @@ builder.Services.AddTransient<IMenuItemService, MenuItemService>();
 builder.Services.AddTransient<IShoppingCartService, ShoppingCartService>();
 builder.Services.AddScoped<EShop.Service.Interface.IOrderService, EShop.Service.Implementation.OrderService>();
 builder.Services.AddScoped<ERestaurant.Service.Interface.IDeliveryPersonService, ERestaurant.Service.Implementation.DeliveryPersonService>();
+builder.Services.AddScoped<AlbumService>();
 
-
+builder.Services.AddHttpClient<AlbumService>();
 
 builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
